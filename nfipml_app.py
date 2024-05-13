@@ -12,7 +12,7 @@ st.title("🎈 Integrated Streamlit App 🎈")
 
 # Section for interactive chat
 st.markdown('## Chat with Tyrion Lannister ⚔️')
-col1 = st.columns(1)
+col1 = st.columns(1)[0]  # Access the first column
 with col1:
     st.markdown(
         """
@@ -20,10 +20,13 @@ with col1:
         - Office Politics
         - War Strategy
         - The Targaryens
-
-         #### [Sign Up Now 🤘🏻]({config('STRIPE_CHECKOUT_LINK')})
         """
     )
+
+    # Button for signing up
+    if st.button("Sign Up Now 🤘🏻"):
+        st.write(f"Please visit the following link to sign up: {config('STRIPE_CHECKOUT_LINK')}")
+
 
 st.markdown('### Already have an Account? Login Below👇🏻')
 with st.form("login_form"):
