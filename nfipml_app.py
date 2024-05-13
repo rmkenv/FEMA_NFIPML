@@ -21,7 +21,7 @@ with col1:
         - War Strategy
         - The Targaryens
 
-        #### [Sign Up Now 🤘🏻]({config('STRIPE_CHECKOUT_LINK')})
+        #### [Sign Up Now 🤘🏻]({config('https://buy.stripe.com/test_9AQ5mB2Gq9KwdZ65kk')})
         """
     )
 
