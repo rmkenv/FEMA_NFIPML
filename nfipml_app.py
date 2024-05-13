@@ -101,3 +101,10 @@ if st.button('Search NFIP Data'):
         st.warning("Please enter a zip code and select at least one column.")
 else:
     st.info('Please log in or sign up to access the app.')
+
+if 'logged_in' in st.session_state.keys():
+    if st.session_state['logged_in']:
+        st.markdown('## Ask Me Anything')
+        question = st.text_input('Ask your question')
+        if question != '':
+            st.write('I drink and I know things.')
