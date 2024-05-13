@@ -39,9 +39,33 @@ if 'logged_in' in st.session_state and st.session_state['logged_in']:
 
     # Data dictionary and options for dropdown
     data_dictionary = {
-        'psCountyCode': {'description': 'FIPS County Code', 'required': True, 'type': 'text'},
-        'state': {'description': 'State', 'required': True, 'type': 'text'},
-        # Add more items as needed
+    'psCountyCode': {'description': 'FIPS County Code', 'required': True, 'type': 'text'},
+    'state': {'description': 'State', 'required': True, 'type': 'text'},
+    'stateAbbreviation': {'description': 'State Abbreviation', 'required': True, 'type': 'text'},
+    'county': {'description': 'County', 'required': True, 'type': 'text'},
+    'zipCode': {'description': 'Zip Code', 'required': True, 'type': 'text'},
+    'reportedCity': {'description': 'Reported City', 'required': True, 'type': 'text'},
+    'communityIdNumber': {'description': 'NFIP Community ID Number', 'required': True, 'type': 'text'},
+    'communityName': {'description': 'NFIP Community Name', 'required': True, 'type': 'text'},
+    'censusBlockGroup': {'description': 'Census Block Group FIPS', 'required': True, 'type': 'text'},
+    'nfipRl': {'description': 'NFIP RL', 'required': True, 'type': 'boolean'},
+    'nfipSrl': {'description': 'NFIP SRL', 'required': True, 'type': 'boolean'},
+    'fmaRl': {'description': 'FMA RL', 'required': True, 'type': 'boolean'},
+    'fmaSrl': {'description': 'FMA SRL', 'required': True, 'type': 'boolean'},
+    'asOfDate': {'description': 'As of Date', 'required': True, 'type': 'date'},
+    'floodZone': {'description': 'Flood Zone', 'required': True, 'type': 'text'},
+    'latitude': {'description': 'Latitude', 'required': True, 'type': 'decimal'},
+    'longitude': {'description': 'Longitude', 'required': True, 'type': 'decimal'},
+    'occupancyType': {'description': 'Occupancy Type', 'required': True, 'type': 'smallint'},
+    'originalConstructionDate': {'description': 'Original Construction Date', 'required': True, 'type': 'date'},
+    'originalNBDate': {'description': 'Original NB Date', 'required': True, 'type': 'date'},
+    'postFIRMConstructionIndicator': {'description': 'Post FIRM Construction Indicator', 'required': True, 'type': 'boolean'},
+    'primaryResidenceIndicator': {'description': 'Primary Residence Indicator', 'required': True, 'type': 'boolean'},
+    'mitigatedIndicator': {'description': 'Mitigated Indicator', 'required': True, 'type': 'boolean'},
+    'insuredIndicator': {'description': 'Insured Indicator', 'required': True, 'type': 'boolean'},
+    'totalLosses': {'description': 'Total Losses', 'required': True, 'type': 'smallint'},
+    'mostRecentDateofLoss': {'description': 'Most Recent Date of Loss', 'required': True, 'type': 'date'},
+    'id': {'description': 'ID', 'required': True, 'type': 'uuid'}
     }
 
     column_options = {k: v['description'] for k, v in data_dictionary.items()}
