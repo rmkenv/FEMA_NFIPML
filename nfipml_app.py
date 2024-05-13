@@ -78,7 +78,8 @@ column_options = [{'label': v['description'], 'value': k} for k, v in data_dicti
 # Streamlit layout
 st.title("Search NFIP Multiple Loss Properties")
 
-zip_code = st.text_input('Enter zip code')
+# Unique keys are added to each text input
+zip_code = st.text_input('Enter zip code', key='zip_code_input')
 selected_columns = st.multiselect('Select columns to display', options=[option['value'] for option in column_options], format_func=lambda x: data_dictionary[x]['description'])
 
 if st.button('Search NFIP Data'):
@@ -93,7 +94,7 @@ if st.button('Search NFIP Data'):
                 
                 # Allow graph generation if more than one column is selected
                 if len(selected_columns) > 1:
-                    st.button('Show Graph')  # Button to show graph
+                    st.button('Show Graph', key='show_graph_button')  # Unique key for the button
 
                     if st.session_state.get('show_graph'):
                         fig = px.bar(table_data, x=selected_columns[0], y=selected_columns[1:])
