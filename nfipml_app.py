@@ -37,8 +37,8 @@ if 'logged_in' in st.session_state and st.session_state['logged_in']:
     # Title for the NFIP data search functionality
     st.subheader("Search NFIP Multiple Loss Properties")
 
-    # Data dictionary and options for dropdown
-    data_dictionary = {
+ # Define the data dictionary before its usage
+data_dictionary = {
     'psCountyCode': {'description': 'FIPS County Code', 'required': True, 'type': 'text'},
     'state': {'description': 'State', 'required': True, 'type': 'text'},
     'stateAbbreviation': {'description': 'State Abbreviation', 'required': True, 'type': 'text'},
@@ -66,19 +66,13 @@ if 'logged_in' in st.session_state and st.session_state['logged_in']:
     'totalLosses': {'description': 'Total Losses', 'required': True, 'type': 'smallint'},
     'mostRecentDateofLoss': {'description': 'Most Recent Date of Loss', 'required': True, 'type': 'date'},
     'id': {'description': 'ID', 'required': True, 'type': 'uuid'}
-    }
+}
 
-    column_options = {k: v['description'] for k, v in data_dictionary.items()}
-
-    zip_code = st.text_input('Enter zip code')
-    selected_columns = st.multiselect('Select columns to display', options=list(column_options.keys()), format_func=lambda x: column_options[x])
 # Convert data dictionary to options for the dropdown
 column_options = [{'label': v['description'], 'value': k} for k, v in data_dictionary.items()]
 
 # Streamlit layout
 st.title("Search NFIP Multiple Loss Properties")
-
-# Unique keys are added to each text input
 zip_code = st.text_input('Enter zip code', key='zip_code_input')
 selected_columns = st.multiselect('Select columns to display', options=[option['value'] for option in column_options], format_func=lambda x: data_dictionary[x]['description'])
 
@@ -94,7 +88,7 @@ if st.button('Search NFIP Data'):
                 
                 # Allow graph generation if more than one column is selected
                 if len(selected_columns) > 1:
-                    st.button('Show Graph', key='show_graph_button')  # Unique key for the button
+                    st.button('Show Graph', key='show_graph_button')
 
                     if st.session_state.get('show_graph'):
                         fig = px.bar(table_data, x=selected_columns[0], y=selected_columns[1:])
